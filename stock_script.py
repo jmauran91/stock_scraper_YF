@@ -45,12 +45,15 @@ for stock in stocks_arr:
         try:
             page_row1 = page_stat1.find_parent('tr')
             try:
-                page_statnum1 = page_row1.find_all('span')[1].contents[1]
+                page_statnum1 = page_row1.find_all('span')[1].contents[1].get_text(strip=True)
+                print(page_statnum1)
             except:
-                page_statnum1 = page_row1.find_all('td')[1].contents[0]
+                page_statnum1 = page_row1.find_all('td')[1].contents[0].get_text(strip=True)
+                print(page_statnum1)
         except:
             print('Invalid parent for this element')
             page_statnum1 = "N/A"
+
         stock_info.append(page_statnum1)
 
     browser.get(url2)
@@ -61,9 +64,11 @@ for stock in stocks_arr:
         try:
             page_row2 = page_stat2.find_parent('tr')
             try:
-                page_statnum2 = page_row2.find_all('span')[1].contents[0]
+                page_statnum2 = page_row2.find_all('span')[1].contents[0].get_text(strip=True)
+                print(page_statnum2)
             except:
-                page_statnum2 = page_row2.find_all('td')[1].contents[0]
+                page_statnum2 = page_row2.find_all('td')[1].contents[0].get_text(strip=True)
+                print(page_statnum2)
         except:
             print('Invalid parent for this element')
             page_statnum2 = 'N/A'
